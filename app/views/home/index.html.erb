@@ -1,2 +1,13 @@
 <h1>Welcome to Jumpstart!</h1>
 <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+
+<!-- component examples: message will be passed as a prop to the vue component -->
+<foo :message="<%= "rendered by vue.js in the foo component".to_json %>"></foo>
+<bar></bar>
+<% 1.upto(3).each do |i| %>
+  <foo :message="<%= (i.to_s+" ✖ emoji").to_json %>"></foo>
+<% end %>
+<foo :message="<%= "override the template".to_json %>" inline-template>
+  <% # this way, you can use rails helpers in a vue template %>
+  <small>{{message}}</small>
+</foo>

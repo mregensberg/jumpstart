@@ -13,8 +13,22 @@ window.Rails = Rails
 
 import 'bootstrap'
 import 'data-confirm-modal'
+import TurbolinksAdapter from 'vue-turbolinks'
+import Vue from 'vue/dist/vue.esm'
+import Foo from '../foo.vue'
+import Bar from '../bar.vue'
 
 $(document).on("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
   $('[data-toggle="popover"]').popover()
+})
+
+Vue.use(TurbolinksAdapter)
+Vue.component('foo', Foo)
+Vue.component('bar', Bar)
+
+document.addEventListener('turbolinks:load', () => {
+  const app = new Vue({
+    el: '[data-behaviour="vue"]',
+  })
 })
